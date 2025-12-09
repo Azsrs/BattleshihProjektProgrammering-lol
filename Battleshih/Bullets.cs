@@ -1,10 +1,10 @@
-using System;
-using System.Numerics;
+// using System;
+// using System.Numerics;
 
-namespace Battleshih;
+// namespace Battleshih;
 
-public struct Bullet
-{
-public Vector2 Velocity;
-public Vector2 Position;
-}
+// public struct Bullet
+// {
+// public Vector2 Velocity;
+// public Vector2 Position;
+// }

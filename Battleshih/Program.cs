@@ -66,3 +66,11 @@ while (!Raylib.WindowShouldClose())
         Bullets.Remove(bullet);
     }
 }
+
+
+
+class Bullet
+{
+public Vector2 Velocity;
+public Vector2 Position;
+}
