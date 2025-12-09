@@ -1,0 +1,13 @@
+1. Rita ut fönstret med skepp och fiender
+
+2. Förflytta skeppet baserat på vilka plitangenter som används
+
+3. Skjut på enter (avlossa ett skott som åker upp längst med skärmen)
+
+4. Om skott träffar fiende, ta bort fienden och skottet
+
+5. räkna poäng
+
+6. lyckas fienden ta sig hela vägen ner, avsluta spel
+
+7. om alla fiender döda, ladda in nya och behåll poäng
