@@ -1,6 +1,4 @@
-﻿using System.ComponentModel;
-using System.Numerics;
-using Battleshih;
+﻿using System.Numerics;
 using Raylib_cs;
 
 Raylib.InitWindow(800, 800, "Shooty shooty bang bang"); //Skapa window
@@ -36,19 +34,23 @@ while (!Raylib.WindowShouldClose())
     {
         Bullet b = new()
         {
-            Velocity = new Vector2(0, -10),
+            Velocity = new Vector2(0, -1),
             Position = new Vector2(SHitBox.X, SHitBox.Y),
         };
         Bullets.Add(b);
     }
 
-    foreach (Bullet bullet in Bullets)
-    {
-        bullet.Position += bullet.Velocity;    
-    }
+    
 
     Raylib.BeginDrawing();
     Raylib.ClearBackground(Color.Black);
+    
+foreach (Bullet bullet in Bullets)
+{
+    bullet.Position += bullet.Velocity;    
+    Raylib.DrawTexture(BulletTexture, (int)bullet.Position.X, (int)bullet.Position.Y, Color.White);
+}
+
     Raylib.DrawTexture(Ship, (int)SHitBox.X, (int)SHitBox.Y, Color.White);
     Raylib.EndDrawing();
 
