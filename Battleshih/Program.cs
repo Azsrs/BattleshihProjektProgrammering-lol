@@ -13,10 +13,11 @@ Rectangle SHitBox = new(400, 700, Ship.Dimensions);
 
 Texture2D BulletTexture = Raylib.LoadTexture(@"Bullet.png"); //Create bullet
 List<Bullet> Bullets = [];
-List<Bullet> toRemove = [];
+List<Bullet> toRemoveB = [];
 
 Texture2D EnemyTexture = Raylib.LoadTexture(@"SpaceInvader.png");
 List<Enemy> Enemies = [];
+List<Enemy> ToRemoveE = [];
 
 for (int i = 1; i < 8; i++)
 {
@@ -82,18 +83,30 @@ foreach (Bullet bullet in Bullets) //Every bullet in the bullets list moves acco
     Raylib.DrawTexture(Ship, (int)SHitBox.X, (int)SHitBox.Y, Color.White); //Draw the Ship/Player
     Raylib.EndDrawing();
 
+
     foreach (Bullet bullet in Bullets) //If a bullet goes offscreen, remove it from the list of bullets
     {
         if (bullet.Position.Y < 0) 
         {
-            toRemove.Add(bullet);
+            toRemoveB.Add(bullet);
         }
-        
+        foreach (Enemy enemies in Enemies)
+        {
+            if (Raylib.CheckCollisionRecs(bullet.BulletBox, enemies.EnemyRect))
+            {
+                toRemoveB.Add(bullet);
+                ToRemoveE.Add(enemies);
+            }
+        }
     }
 
-    foreach (Bullet bullet in toRemove)
+    foreach (Bullet bullet in toRemoveB)
     {
         Bullets.Remove(bullet);
+    }
+    foreach (Enemy enemies in ToRemoveE)
+    {
+        Enemies.Remove(enemies);
     }
 }
 
