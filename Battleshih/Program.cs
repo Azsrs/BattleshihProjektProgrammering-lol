@@ -29,6 +29,16 @@ for (int i = 1; i < 8; i++) //Create enemies in a row after enemy class, add to 
         Alive = true,
         EnemyRect = new(i * 90, 80, EnemyTexture.Dimensions),
     };
+    for (int I = 1; I < 8; I++)
+    {
+        Enemy enemy1 = new()
+    {
+        Position = new Vector2(I * 90, 200),
+        Alive = true,
+        EnemyRect = new(I * 90, 200, EnemyTexture.Dimensions),
+    };
+    Enemies.Add(enemy1);
+    }
     Enemies.Add(enemy);
 
 }
@@ -67,7 +77,7 @@ while (!Raylib.WindowShouldClose())
         Bullets.Add(b); // Add bullets to the list
     }
 
-    if (winner == true)
+    if (winner == true) //If there are no enemies: Display win screen
     {
         Raylib.BeginDrawing();
         Raylib.ClearBackground(Color.Black);
@@ -89,7 +99,7 @@ while (!Raylib.WindowShouldClose())
 
     }
 
-    
+   
 
     foreach (Bullet bullet in Bullets) //Every bullet in the bullets list moves according to the set velocity
     {
