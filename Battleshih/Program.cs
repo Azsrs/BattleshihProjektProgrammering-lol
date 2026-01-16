@@ -1,6 +1,4 @@
 ﻿using System.Numerics;
-using System.Runtime.CompilerServices;
-using System.Security.Cryptography.X509Certificates;
 using Raylib_cs;
 
 Raylib.InitWindow(800, 800, "Place Invaders"); //Create Window
@@ -20,6 +18,7 @@ List<Bullet> toRemoveB = [];
 Texture2D EnemyTexture = Raylib.LoadTexture(@"SpaceInvader.png"); //Create enemies
 List<Enemy> Enemies = [];
 List<Enemy> ToRemoveE = [];
+float enemyspeed = 0;
 
 for (int i = 1; i < 8; i++) //Create enemies in a row after enemy class, add to enemy list
 {
@@ -40,14 +39,12 @@ for (int i = 1; i < 8; i++) //Create enemies in a row after enemy class, add to 
     Enemies.Add(enemy1);
     }
     Enemies.Add(enemy);
-
 }
-
 
 
 while (!Raylib.WindowShouldClose())
 {
-    if (Enemies.Count == 0) //Victory
+    if (!winner && Enemies.Count == 0) //Victory
     {
         winner = true;
     }
@@ -65,6 +62,7 @@ while (!Raylib.WindowShouldClose())
         SHitBox.X += speed;
     }
 
+    
 
     if (Raylib.IsKeyPressed(KeyboardKey.Space)) //Bullet creation on SPACE-click
     {
@@ -96,7 +94,8 @@ while (!Raylib.WindowShouldClose())
     {
 
         Raylib.DrawTexture(EnemyTexture, (int)enemies.Position.X, (int)enemies.Position.Y, Color.White);
-
+    
+        
     }
 
    
@@ -136,7 +135,8 @@ while (!Raylib.WindowShouldClose())
     {
         Enemies.Remove(enemies);
     }
-
+    toRemoveB.Clear();
+    ToRemoveE.Clear();
     }
 }
 
